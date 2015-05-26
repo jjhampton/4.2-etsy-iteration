@@ -35,11 +35,11 @@ console.log("The average price is $" + (priceTotal/numberOfItems).toFixed(2)); /
 
 //array filter
 
-function eliminate(item) {
+function eliminateHiLow(item) {
   return item.price > 14 && item.price <18;
 }
 
-var between14and18 = items.filter(eliminate);
+var between14and18 = items.filter(eliminateHiLow);
 // .map(function(item){
 //   return item.title;
 // });
@@ -55,11 +55,39 @@ between14and18.forEach(function(item) {
 
 //filter items
 
-function currencyGBP(item) {
+function getCurrencyGBP(item) {
   return item.currency_code === "GBP";
 }
 
-var item = items.filter(currencyGBP);
+var itemGBP = items.filter(getCurrencyGBP);
 
 
-console.log(item[0].title + " costs £" + item[0].price);
+console.log(itemGBP[0].title + " costs £" + itemGBP[0].price);
+
+//Show me how to find which items are made of wood. Please console.log the ones you find.
+
+//SALE Mid Century Siesta Ware White Mug with Anchor - Set of 3 is made of wood.
+// Bottle cap catcher personalized. Man cave gift for him- Wooden Beer pub sign - Groomsmen wedding Gift is made of wood.
+// Medium Size, Welcome To Our Firepit-Where Friends And Marshmallows Get Toasted At The Same Time-Painted Wood Sign-Custom Colors is made of wood.
+// Magnetic Wall Mount Bottle Opener Barware Set - Stainless Steel or Black - Personalized if you like! is made of wood.
+// Engraved Pocket Knife, Personalized Groomsmen Gift, Ring Bearer Gift, Graduation Gift, 4 Knives is made of wood.
+
+//filter items
+
+function getWoodItems(item) {
+  var isWood = false;
+
+  item.materials.forEach(function(material) {
+    if (material === "wood") {
+      isWood = true;
+    }
+  });
+
+  return isWood;
+}
+
+var woodArray = items.filter(getWoodItems);
+
+woodArray.forEach(function(item) {
+  console.log(item.title + " is made of wood.");
+});
