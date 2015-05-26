@@ -1,4 +1,4 @@
-var items = [{
+[{
   "listing_id": 161489961,
   "state": "active",
   "user_id": 7492310,
@@ -1023,4 +1023,4 @@ var items = [{
   "language": "en-US",
   "has_variations": false,
   "used_manufacturer": false
-}];
+}]
