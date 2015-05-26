@@ -127,15 +127,14 @@ woodArray.forEach(function(item) {
 // the three broomsticks glass
 // personalized harry potter glass
 
-//map to create new array materialCount w/ only three properties: title, materials, and new property materialCount;
 //filter to keep items w/ item.materialCount > 7
 
-var newArray = items.filter(function(item, index, array) {
+var arrayOver7Materials = items.filter(function(item) {
   return item.materials.length > 7;
 });
 
 
-newArray.forEach(function(item) {
+arrayOver7Materials.forEach(function(item) {
 
   console.log(item.title + " has " + item.materials.length + " materials: \n");
   item.materials.forEach(function(material) {
@@ -143,3 +142,16 @@ newArray.forEach(function(item) {
   });
   console.log("\n");
 });
+
+// Show me how to calculate how many items were made by their sellers
+//
+// 18 were made by their sellers
+
+//filter if item.who_made === "i_did"
+//calculate length of new filtered array
+
+var arrayMadeBySellers = items.filter(function(item) {
+  return item.who_made === "i_did";
+});
+
+console.log(arrayMadeBySellers.length + " items were made by their sellers");
