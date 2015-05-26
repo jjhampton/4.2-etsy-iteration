@@ -8,12 +8,15 @@ var items = require('./items.json');
 var priceTotal = 0; // total price added up  between all items
 var numberOfItems = 0; // total number of items
 
+
+// Add each item's price to the running total.  Increment number of items by one each time.
 items.forEach(function(item) {
   priceTotal += item.price;
   numberOfItems += 1;
 });
 
-console.log("The average price is $" + (priceTotal/numberOfItems).toFixed(2)); // logs the average of all items
+// logs the average of all items
+console.log("The average price is $" + (priceTotal/numberOfItems).toFixed(2));
 console.log("\n");
 
 
@@ -35,17 +38,16 @@ console.log("\n");
 }
 ] */
 
-//array filter
+//Callback function for Array.prototype.filter, only returns items who have a price in target range
 
 function eliminateHiLow(item) {
   return item.price > 14 && item.price <18;
 }
 
+//Create new array filtering out those items who do not pass the test
 var between14and18 = items.filter(eliminateHiLow);
-// .map(function(item){
-//   return item.title;
-// });
 
+//Log each item's title to the console
 console.log("Items that cost between $14.00 USD and $18.00 USD:");
 between14and18.forEach(function(item) {
   console.log(item.title);
@@ -57,15 +59,16 @@ console.log("\n");
 //
 // 1970s Schlitz Malt Liquor Glass Beer Pitcher costs £18
 
-//filter items
 
+//Callback function to pass to Array.prototype.filter, only returns items w/ matching currency code property
 function getCurrencyGBP(item) {
   return item.currency_code === "GBP";
 }
 
+//Create new array filtering out those items who do not pass the test
 var itemGBP = items.filter(getCurrencyGBP);
 
-
+//Log item's title and price to console
 console.log(itemGBP[0].title + " costs £" + itemGBP[0].price);
 console.log("\n");
 
@@ -78,8 +81,7 @@ console.log("\n");
 // Magnetic Wall Mount Bottle Opener Barware Set - Stainless Steel or Black - Personalized if you like! is made of wood.
 // Engraved Pocket Knife, Personalized Groomsmen Gift, Ring Bearer Gift, Graduation Gift, 4 Knives is made of wood.
 
-//filter items
-
+//Callback function
 function getWoodItems(item) {
   var isWood = false;
 
@@ -92,6 +94,7 @@ function getWoodItems(item) {
   return isWood;
 }
 
+//Create new array filtering out those items who do not pass the test
 var woodArray = items.filter(getWoodItems);
 
 woodArray.forEach(function(item) {
@@ -133,7 +136,7 @@ var arrayOver7Materials = items.filter(function(item) {
   return item.materials.length > 7;
 });
 
-
+//Log to console
 arrayOver7Materials.forEach(function(item) {
 
   console.log(item.title + " has " + item.materials.length + " materials: \n");
