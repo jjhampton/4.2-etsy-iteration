@@ -6,17 +6,14 @@ var items = require('./items.json');
 // I'll accept either $23.63 or $23.62
 
 var priceTotal = 0; // total price added up  between all items
-var numberOfItems = 0; // total number of items
 
-
-// Add each item's price to the running total.  Increment number of items by one each time.
+// Add each item's price to the running total.
 items.forEach(function(item) {
   priceTotal += item.price;
-  numberOfItems += 1;
 });
 
 // logs the average of all items
-console.log("The average price is $" + (priceTotal/numberOfItems).toFixed(2));
+console.log("The average price is $" + (priceTotal/items.length).toFixed(2));
 console.log("\n");
 
 
